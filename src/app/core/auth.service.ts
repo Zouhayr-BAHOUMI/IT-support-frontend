@@ -32,4 +32,18 @@ export class AuthService {
   getToken() : string | null{
     return localStorage.getItem('token');
   }
+
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    return token != null && !this.jwt.isTokenExpired(token);
+  }
+
+  getCurrentUserRole(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = this.jwt.decodeToken(token);
+      return decodedToken.role;
+    }
+    return null;
+  }
 }
