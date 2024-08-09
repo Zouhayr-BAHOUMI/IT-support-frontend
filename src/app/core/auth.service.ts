@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
+import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable, tap } from 'rxjs';
+import { LoginResponse } from '../interfaces/login-response';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +11,25 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private apiUrl = 'http://localhost:8082/';
+  private jwt = new JwtHelperService();
 
   constructor(private http : HttpClient) { }
 
   
-  login(loginRequest : any): Observable<any>{
-    return this.http.post(this.apiUrl +'user/login', loginRequest)
+  login(loginRequest : any): Observable<LoginResponse>{
+    return this.http.post<LoginResponse>(this.apiUrl +'user/login', loginRequest).pipe(
+      tap(response => {
+        localStorage.setItem('token', response.token);
+      })
+    );
+  }
+
+
+  logout() : void{
+    localStorage.removeItem('token');
+  }
+
+  getToken() : string | null{
+    return localStorage.getItem('token');
   }
 }
