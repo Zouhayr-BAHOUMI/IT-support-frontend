@@ -40,10 +40,11 @@ export class LoginComponent {
         response =>{
           const role = this.authService.getCurrentUserRole();
           if(role){
-
+              console.log(response);
+              this.redirectUsers(role);
+          }else{
+            this.router.navigate(['/login'])
           }
-          this.loginForm.reset();
-          this.router.navigate(['/dashbord'])
         },
         error =>{
           console.log("Failed to log in", JSON.stringify(error));
@@ -56,6 +57,7 @@ export class LoginComponent {
   }
 
   public redirectUsers(role : string) : void {
+    
       switch(role){
         case 'ADMIN' : 
           this.router.navigate(['/admin/admin-dashboard']);
