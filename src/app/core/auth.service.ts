@@ -46,4 +46,13 @@ export class AuthService {
     }
     return null;
   }
+
+  // getCurrentUserName(): string | null {
+  //   const token = this.getToken();
+  //   if (token) {
+  //     const decodedToken = this.jwt.decodeToken(token);
+  //     return decodedToken.fullName;
+  //   }
+  //   return null;
+  // }
 }
