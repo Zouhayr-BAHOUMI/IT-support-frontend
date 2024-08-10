@@ -21,7 +21,7 @@ export class PannesService {
   }
 
   public getPanneById(idPanne: number): Observable<Panne> {
-    return this.http.get<Panne>(`${this.apiUrl}/idPanne?idPanne=${idPanne}`);
+    return this.http.get<Panne>(`${this.apiUrl}/admin/gestion-panne/idPanne?idPanne=${idPanne}`);
   }
 
   public updatePanne(idPanne: number, panne: Panne): Observable<void> {
