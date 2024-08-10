@@ -15,11 +15,6 @@ import { FooterComponent } from "../../../shared/components/footer/footer.compon
 })
 export class AdminDashboardComponent {
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']); // Redirect to login page after logout
-  }
+  constructor() {}
 
 }

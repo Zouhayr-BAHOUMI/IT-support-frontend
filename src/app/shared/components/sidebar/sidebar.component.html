@@ -1,11 +1,18 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <li class="nav-item active">
-      <a class="nav-link" routerLink="/dashboard">
+      <a class="nav-link" routerLink="/admin/admin-dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
       </a>
     </li>
     <hr class="sidebar-divider">
+    <li class="nav-item">
+      <a class="nav-link collapsed"  routerLink="/admin/admin-dashboard/users" data-toggle="collapse" data-target="#collapseClients"
+         aria-expanded="true" aria-controls="collapseClients">
+        <i class="fas fa-fw fa-users"></i>
+        <span>gestion des users</span>
+      </a>
+    </li>
     <li class="nav-item">
       <a class="nav-link collapsed" routerLink="/dashboard/events" data-toggle="collapse" data-target="#collapseEvents"
          aria-expanded="true" aria-controls="collapseEvents">
