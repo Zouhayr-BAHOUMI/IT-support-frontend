@@ -25,7 +25,7 @@ export class PannesService {
   }
 
   public updatePanne(idPanne: number, panne: Panne): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/update/${idPanne}`, panne);
+    return this.http.put<void>(`${this.apiUrl}/admin/gestion-panne/update/${idPanne}`, panne);
   }
 
   public deletePanne(idPanne: number): Observable<void> {

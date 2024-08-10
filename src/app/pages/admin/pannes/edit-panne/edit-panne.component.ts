@@ -50,6 +50,8 @@ export class EditPanneComponent implements OnInit{
 
   onSubmit() {
     if (this.editPanneForm.valid) {
+
+      this.panne = this.editPanneForm.value;
       
       this.panneService.updatePanne(this.idPanne, this.panne).subscribe(
         Response => {
