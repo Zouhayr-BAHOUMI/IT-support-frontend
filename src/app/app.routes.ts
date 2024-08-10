@@ -12,7 +12,7 @@ export const routes: Routes = [
     { path: 'admin/admin-dashboard', component: AdminDashboardComponent, children : [
         { path: '', component: MainContentComponent },
         { path: 'users', component: ListUsersComponent },
-        { path: 'create', component: CreateUserComponent },
+        { path: 'users/create', component: CreateUserComponent },
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
      { path: '', redirectTo: '/login', pathMatch: 'full' },

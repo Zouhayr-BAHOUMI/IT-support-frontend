@@ -15,4 +15,12 @@ export class UsersService {
   public getUsers (): Observable<User[]>{
     return this.http.get<User[]>(`${this.apiUrl}/admin/gestion-users/all`);
   }
+
+  registerUser(registerData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/register-user`, registerData);
+  }
+
+  registerTechnician(registerData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/auth/register-technicein`, registerData);
+  }
 }
