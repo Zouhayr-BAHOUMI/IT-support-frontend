@@ -4,11 +4,12 @@ import { Panne } from 'src/app/interfaces/panne';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { PannesService } from 'src/app/shared/services/pannes.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-list-pannes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './list-pannes.component.html',
   styleUrls: ['./list-pannes.component.scss']
 })

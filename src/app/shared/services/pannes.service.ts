@@ -16,4 +16,20 @@ export class PannesService {
     return this.http.get<Panne[]>(`${this.apiUrl}/admin/gestion-panne/`);
   }
 
+  public addPanne(panne: Panne): Observable<Panne> {
+    return this.http.post<Panne>(`${this.apiUrl}/admin/gestion-panne/add`, panne, { responseType: 'text' as 'json' });
+  }
+
+  public getPanneById(idPanne: number): Observable<Panne> {
+    return this.http.get<Panne>(`${this.apiUrl}/idPanne?idPanne=${idPanne}`);
+  }
+
+  public updatePanne(idPanne: number, panne: Panne): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/update/${idPanne}`, panne);
+  }
+
+  public deletePanne(idPanne: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${idPanne}`);
+  }
+
 }

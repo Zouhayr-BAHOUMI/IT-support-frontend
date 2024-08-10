@@ -7,6 +7,7 @@ import { ListUsersComponent } from './pages/admin/users/list-users/list-users.co
 import { CreateUserComponent } from './pages/admin/users/create-user/create-user.component';
 import { ListPannesComponent } from './pages/admin/pannes/list-pannes/list-pannes.component';
 import { CreatePanneComponent } from './pages/admin/pannes/create-panne/create-panne.component';
+import { EditPanneComponent } from './pages/admin/pannes/edit-panne/edit-panne.component';
 
 export const routes: Routes = [
 
@@ -17,6 +18,7 @@ export const routes: Routes = [
         { path: 'users/create', component: CreateUserComponent },
         { path: 'pannes', component: ListPannesComponent },
         { path: 'pannes/create', component: CreatePanneComponent },
+        { path: 'pannes/edit/:idPanne', component: EditPanneComponent },
 
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
