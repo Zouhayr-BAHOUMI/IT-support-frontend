@@ -16,8 +16,8 @@ export class EquipementsService {
     return this.http.get<Equipement[]>(`${this.apiUrl}/`);
   }
 
-  public addEquipement(equipement: Equipement): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/add`, equipement, { responseType: 'text' as 'json' });
+  public addEquipement(equipement: Equipement): Observable<Equipement> {
+    return this.http.post<Equipement>(`${this.apiUrl}/add`, equipement, { responseType: 'text' as 'json' });
   }
 
   public getEquipementById(idEquipement: number): Observable<Equipement> {

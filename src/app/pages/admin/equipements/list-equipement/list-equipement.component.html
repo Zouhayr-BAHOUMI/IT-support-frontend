@@ -20,18 +20,20 @@
                         <th scope="col">Status</th>
                         <th scope="col">Type</th>
                         <th scope="col">Date Achete</th>
+                        <th scope="col">Utilisateur</th>
                         <th scope="col">Manage</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let equipement of equipements">
                         <td>
-                            <img [src]="equipement.imageUrl" alt="Image" style="width: 100px; height: auto;">
+                            <img [src]="'assets/images/' + equipement.imageUrl" alt="Image" style="width: 100px; height: auto;">
                         </td>
                         <td>{{ equipement.nom }}</td>
                         <td>{{ equipement.status }}</td>
                         <td>{{ equipement.type }}</td>
                         <td>{{ equipement.dateAchetee | date }}</td>
+                        <td>{{ equipement.utilisateur || 'Not in use'}}</td>
                         <td>
                             <a class="btn btn-success mr-2" [routerLink]="['/admin/admin-dashboard/equipements/edit', equipement.id]">Edit</a>
                             <a class="btn btn-danger" >Delete</a>
