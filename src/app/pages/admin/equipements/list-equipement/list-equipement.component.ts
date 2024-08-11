@@ -5,6 +5,7 @@ import { Equipement } from 'src/app/interfaces/equipement';
 import { EquipementsService } from 'src/app/shared/services/equipements.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-list-equipement',
   standalone: true,
@@ -14,7 +15,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ListEquipementComponent {
 
+
   equipements: Equipement[] = [];
+
+  equipementToDelete : Equipement | null = null;
+  showModal = false;
 
   constructor(private equipementService: EquipementsService) { }
 
@@ -32,6 +37,29 @@ export class ListEquipementComponent {
         console.log(error.message);
       }
     );
+  }
+
+  openDeleteModal(equipement : Equipement) : void{
+    this.equipementToDelete = equipement;
+    this.showModal = true;
+  }
+
+  confirmDelete(): void {
+    if (this.equipementToDelete) {
+      this.deleteEquipement(this.equipementToDelete.id);
+    }
+  }
+
+  cancelDelete() {
+    this.showModal = false;
+    this.equipementToDelete = null;
+  }
+
+  deleteEquipement(id: number): void {
+    this.equipementService.deleteEquipement(id).subscribe(() => {
+      this.getEquipements();
+      this.cancelDelete();
+    });
   }
 
 }
