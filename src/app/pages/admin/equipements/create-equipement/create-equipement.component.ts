@@ -64,7 +64,7 @@ export class CreateEquipementComponent implements OnInit {
       this.equipementsService.addEquipement(equipementToAdd as Equipement).subscribe(
         response => {
           console.log('equipement created successfully', response);
-          this.router.navigate(['/dashboard/events']);
+          this.router.navigate(['/admin/admin-dashboard/equipements']);
         },
         error => {
           console.error('Error creating event', error);

@@ -23,4 +23,12 @@ export class EquipementsService {
   public getEquipementById(idEquipement: number): Observable<Equipement> {
     return this.http.get<Equipement>(`${this.apiUrl}/idEquipement?idEquipement=${idEquipement}`);
   }
+
+  public updateEquipement(idEquipement: number, equipement: Equipement): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/update/${idEquipement}`, equipement);
+  }
+
+  public deleteEquipement(idEquipement: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${idEquipement}`);
+  }
 }

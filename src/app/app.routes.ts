@@ -10,6 +10,7 @@ import { CreatePanneComponent } from './pages/admin/pannes/create-panne/create-p
 import { EditPanneComponent } from './pages/admin/pannes/edit-panne/edit-panne.component';
 import { ListEquipementComponent } from './pages/admin/equipements/list-equipement/list-equipement.component';
 import { CreateEquipementComponent } from './pages/admin/equipements/create-equipement/create-equipement.component';
+import { EditEquipementComponent } from './pages/admin/equipements/edit-equipement/edit-equipement.component';
 
 export const routes: Routes = [
 
@@ -23,7 +24,7 @@ export const routes: Routes = [
         { path: 'pannes/edit/:idPanne', component: EditPanneComponent },
         { path: 'equipements', component: ListEquipementComponent },
         { path: 'equipements/create', component: CreateEquipementComponent },
-        { path: 'equipements/edit/:idEquipement', component: EditPanneComponent },
+        { path: 'equipements/edit/:idEquipement', component: EditEquipementComponent },
 
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
