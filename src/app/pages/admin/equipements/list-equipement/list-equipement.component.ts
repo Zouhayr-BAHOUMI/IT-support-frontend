@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { Equipement } from 'src/app/interfaces/equipement';
 import { EquipementsService } from 'src/app/shared/services/equipements.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UsersService } from 'src/app/shared/services/users.service';
+import { User } from 'src/app/interfaces/user';
+import { UserRole } from 'src/app/enums/user-role';
 
 
 @Component({
@@ -17,21 +20,41 @@ export class ListEquipementComponent {
 
 
   equipements: Equipement[] = [];
+  users: User[] = [];
 
   equipementToDelete : Equipement | null = null;
+  equipementToAssigne : Equipement | null = null;
   showModal = false;
+  showAssignModal = false;
 
-  constructor(private equipementService: EquipementsService) { }
+  constructor(
+    private equipementService: EquipementsService,
+    private usersService : UsersService
+  ) { }
 
   
   ngOnInit() {
     this.getEquipements();
+    this.getUsersRole();
   }
+
   public getEquipements():void{
     this.equipementService.getEquipements().subscribe(
       (response : Equipement[]) =>{
         console.log(response);
         this.equipements= response;
+      },
+      (error : HttpErrorResponse) =>{
+        console.log(error.message);
+      }
+    );
+  }
+
+  public getUsersRole() : void{
+    this.usersService.getUsersByRole(UserRole.USER).subscribe(
+      (response : User[]) =>{
+        console.log(response);
+        this.users= response;
       },
       (error : HttpErrorResponse) =>{
         console.log(error.message);
@@ -60,6 +83,30 @@ export class ListEquipementComponent {
       this.getEquipements();
       this.cancelDelete();
     });
+  }
+
+  openAssignModal(equipment: Equipement) : void {
+    this.equipementToAssigne = equipment;
+    this.showAssignModal = true;
+  }
+
+  closeAssignModal() {
+    this.showAssignModal = false;
+    this.equipementToAssigne = null;
+  }
+
+  assignEquipment(idUserSelect: string) {
+
+    const idUser = parseInt(idUserSelect,10)
+    if (this.equipementToAssigne) {
+      this.equipementService.assignEquipmentToUser(this.equipementToAssigne.id, idUser).subscribe(
+        response => {
+          this.getEquipements();
+          this.closeAssignModal();
+        },
+        error => console.error('Error assigning equipment:', error)
+      );
+    }
   }
 
 }

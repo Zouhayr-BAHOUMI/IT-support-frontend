@@ -31,4 +31,10 @@ export class EquipementsService {
   public deleteEquipement(idEquipement: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${idEquipement}`);
   }
+
+  assignEquipmentToUser(equipmentId: number, userId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/ajouter-a-utilisateur`, null, {
+      params: { idEquipement: equipmentId.toString(), idUtilisateur: userId.toString() }
+    });
+  }
 }

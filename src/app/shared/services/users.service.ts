@@ -16,6 +16,10 @@ export class UsersService {
     return this.http.get<User[]>(`${this.apiUrl}/admin/gestion-users/all`);
   }
 
+  public getUsersByRole(role:string): Observable<User[]>{
+    return this.http.get<User[]>(`${this.apiUrl}/admin/gestion-users/userRole?role=${role}`);
+  }
+
   registerUser(registerData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register-user`, registerData);
   }
