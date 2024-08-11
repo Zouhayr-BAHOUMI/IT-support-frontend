@@ -1,3 +1,4 @@
+import { TypeEquipement } from "../enums/type-equipement";
 import { Utilisateur } from "./utilisateur";
 
 export interface Equipement {
@@ -5,7 +6,7 @@ export interface Equipement {
     imageUrl: string;
     nom: string;
     status: string; 
-    type: string; 
+    type: TypeEquipement; 
     dateAchetee: string; 
-    utilisateur: Utilisateur;
+    utilisateur?: Utilisateur;
 }
