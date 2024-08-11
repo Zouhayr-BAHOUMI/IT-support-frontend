@@ -33,10 +33,11 @@
                         <td>{{ equipement.status }}</td>
                         <td>{{ equipement.type }}</td>
                         <td>{{ equipement.dateAchetee | date }}</td>
-                        <td>{{ equipement.utilisateur || 'Not in use'}}</td>
+                        <td>{{ equipement.utilisateur?.fullname || 'Not in use'}}</td>
                         <td>
                             <a class="btn btn-success mr-2" [routerLink]="['/admin/admin-dashboard/equipements/edit', equipement.id]">Edit</a>
-                            <a class="btn btn-danger"  (click)="openDeleteModal(equipement)" >Delete</a>
+                            <a class="btn btn-danger mr-2"  (click)="openDeleteModal(equipement)" >Delete</a>
+                            <a class="btn btn-danger"(click)="openAssignModal(equipement)" >Assigner</a>
                         </td>
                     </tr>
                 </tbody>
@@ -66,3 +67,30 @@
     </div>
 </div>
 <div *ngIf="showModal" class="modal-backdrop fade show"></div>
+
+
+<!-- Assignment Modal -->
+<div *ngIf="showAssignModal" class="modal" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Assign Equipment</h5>
+          <button type="button" class="close" (click)="closeAssignModal()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Assign {{ equipementToAssigne?.nom }} to:</p>
+          <select class="form-control" #userSelect>
+            <option value="">Select a user</option>
+            <option *ngFor="let user of users" [value]="user.id">{{ user.fullname }}</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeAssignModal()">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="assignEquipment(userSelect.value)">Assign</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAssignModal" class="modal-backdrop fade show"></div>
