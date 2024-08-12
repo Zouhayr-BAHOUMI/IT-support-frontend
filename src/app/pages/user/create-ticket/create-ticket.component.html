@@ -1,1 +1,49 @@
-<p>create-ticket works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Create New Ticket</h5>
+            <a routerLink="../" class="btn btn-link">Back</a>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="createTicketForm" (ngSubmit)="onSubmit()">
+              <div class="form-group row">
+                <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
+                <div class="col-md-6">
+                  <textarea id="description" class="form-control" formControlName="description" required></textarea>
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label for="equipement" class="col-md-4 col-form-label text-md-right">Equipement</label>
+                <div class="col-md-6">
+                  <select id="equipement" class="form-control" formControlName="equipement" required>
+                    <option value="">Select a equipement</option>
+                    <option *ngFor="let equipement of equipements" [value]="equipement.id">{{ equipement.nom }}</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label for="panne" class="col-md-4 col-form-label text-md-right">Panne</label>
+                <div class="col-md-6">
+                  <select id="panne" class="form-control" formControlName="panne" required>
+                    <option value="">Select a panne</option>
+                    <option *ngFor="let panne of pannes" [value]="panne.idPanne">{{ panne.description }}</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-group row mb-0">
+                <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

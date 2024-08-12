@@ -12,6 +12,7 @@ import { ListEquipementComponent } from './pages/admin/equipements/list-equipeme
 import { CreateEquipementComponent } from './pages/admin/equipements/create-equipement/create-equipement.component';
 import { EditEquipementComponent } from './pages/admin/equipements/edit-equipement/edit-equipement.component';
 import { ListTicketsComponent } from './pages/user/list-tickets/list-tickets.component';
+import { CreateTicketComponent } from './pages/user/create-ticket/create-ticket.component';
 
 export const routes: Routes = [
 
@@ -29,5 +30,6 @@ export const routes: Routes = [
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
      { path: 'user/user-home', component: ListTicketsComponent },
+     { path: 'user/user-home/create', component: CreateTicketComponent },
      { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
