@@ -11,6 +11,7 @@ import { EditPanneComponent } from './pages/admin/pannes/edit-panne/edit-panne.c
 import { ListEquipementComponent } from './pages/admin/equipements/list-equipement/list-equipement.component';
 import { CreateEquipementComponent } from './pages/admin/equipements/create-equipement/create-equipement.component';
 import { EditEquipementComponent } from './pages/admin/equipements/edit-equipement/edit-equipement.component';
+import { ListTicketsComponent } from './pages/user/list-tickets/list-tickets.component';
 
 export const routes: Routes = [
 
@@ -25,8 +26,8 @@ export const routes: Routes = [
         { path: 'equipements', component: ListEquipementComponent },
         { path: 'equipements/create', component: CreateEquipementComponent },
         { path: 'equipements/edit/:idEquipement', component: EditEquipementComponent },
-
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
+     { path: 'user/user-home', component: ListTicketsComponent },
      { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
