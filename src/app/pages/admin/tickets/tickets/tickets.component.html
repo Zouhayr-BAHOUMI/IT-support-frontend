@@ -1,1 +1,60 @@
-<p>tickets works!</p>
+<div class="d-sm-flex align-items-center justify-content-between ml-3">
+    <h1 class="h3 mb-0 text-gray-800">Tickets</h1>
+</div>
+
+<div class="row">
+    <div class="card ml-3 mx-auto">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Equipment</th>
+                        <th scope="col">Issue</th>
+                        <th scope="col">Technician</th>
+                        <th scope="col">Assign</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ticket of tickets">
+                        <td>{{ ticket.description }}</td>
+                        <td>{{ ticket.dateCreation | date }}</td>
+                        <td>{{ ticket.equipement.nom }}</td>
+                        <td>{{ ticket.panne?.description || 'N/A' }}</td>
+                        <td>{{ ticket.technicien ? ticket.technicien.fullname : 'Not assigned' }}</td>
+                        <td>
+                            <a class="btn btn-success" (click)="openAssignModal(ticket)">Assign</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Assignment Modal -->
+<div *ngIf="showAssignModal" class="modal" tabindex="-1" role="dialog" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Assign Technician</h5>
+                <button type="button" class="close" (click)="closeAssignModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Assign {{ ticketToAssigne?.description }} to:</p>
+                <select class="form-control" #technicianSelect>
+                    <option value="">Select a technician</option>
+                    <option *ngFor="let user of users" [value]="user.id">{{ user.fullname }}</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeAssignModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" >Assign</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showAssignModal" class="modal-backdrop fade show"></div>

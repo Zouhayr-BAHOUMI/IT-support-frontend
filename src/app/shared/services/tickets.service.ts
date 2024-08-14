@@ -26,6 +26,10 @@ export class TicketsService {
     return this.http.get<Panne[]>(`${this.apiUrl}/user/pannes`);
   }
 
+  public getTickets(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/admin/tickets/`);
+  }
+
   public getTicketsUtilisateur(): Observable<Ticket[]> {
     return this.http.get<Ticket[]>(`${this.apiUrl}/user/tickets`);
   }
