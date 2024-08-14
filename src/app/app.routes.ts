@@ -13,6 +13,7 @@ import { CreateEquipementComponent } from './pages/admin/equipements/create-equi
 import { EditEquipementComponent } from './pages/admin/equipements/edit-equipement/edit-equipement.component';
 import { ListTicketsComponent } from './pages/user/list-tickets/list-tickets.component';
 import { CreateTicketComponent } from './pages/user/create-ticket/create-ticket.component';
+import { TicketsComponent } from './pages/admin/tickets/tickets/tickets.component';
 
 export const routes: Routes = [
 
@@ -27,6 +28,7 @@ export const routes: Routes = [
         { path: 'equipements', component: ListEquipementComponent },
         { path: 'equipements/create', component: CreateEquipementComponent },
         { path: 'equipements/edit/:idEquipement', component: EditEquipementComponent },
+        { path: 'tickets', component: TicketsComponent },
     ] },
      { path: 'technicien/technicien-dashboard', component: TechnicienDashboardComponent },
      { path: 'user/user-home', component: ListTicketsComponent },

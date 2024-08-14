@@ -25,6 +25,7 @@ export class NavbarComponent {
     const userName = this.authService.getCurrentUserRole();
     this.fullName = userName || 'User';
   }
+  
 
   toggleDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;

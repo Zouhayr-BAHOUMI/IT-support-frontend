@@ -25,4 +25,18 @@ export class TicketsService {
   public getPannes(): Observable<Panne[]> {
     return this.http.get<Panne[]>(`${this.apiUrl}/user/pannes`);
   }
+
+  public getTickets(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/admin/tickets/`);
+  }
+
+  assignTicketToTechnicien(ticketId: number, technicienId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/admin/tickets/assign`, null, {
+      params: { idTicket: ticketId.toString(), idTechnicien: technicienId.toString() }
+    });
+  }
+
+  public getTicketsUtilisateur(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/user/tickets`);
+  }
 }
