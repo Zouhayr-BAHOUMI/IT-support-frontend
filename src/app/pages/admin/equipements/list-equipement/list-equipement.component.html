@@ -33,7 +33,9 @@
                         <td>{{ equipement.status }}</td>
                         <td>{{ equipement.type }}</td>
                         <td>{{ equipement.dateAchetee | date }}</td>
-                        <td>{{ equipement.utilisateur?.fullname || 'Not in use'}}</td>
+                        <td>
+                            <span>{{ equipement.utilisateur ? getUtilisateurName(equipement.utilisateur) : 'Not in use' }}</span>
+                        </td>
                         <td>
                             <a class="btn btn-success mr-2" [routerLink]="['/admin/admin-dashboard/equipements/edit', equipement.id]">Edit</a>
                             <a class="btn btn-danger mr-2"  (click)="openDeleteModal(equipement)" >Delete</a>

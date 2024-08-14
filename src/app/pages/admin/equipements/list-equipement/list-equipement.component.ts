@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UsersService } from 'src/app/shared/services/users.service';
 import { User } from 'src/app/interfaces/user';
 import { UserRole } from 'src/app/enums/user-role';
+import { Utilisateur } from 'src/app/interfaces/utilisateur';
 
 
 @Component({
@@ -61,6 +62,16 @@ export class ListEquipementComponent {
       }
     );
   }
+
+  getUtilisateurName(utilisateur: Utilisateur | number): string {
+    if (typeof utilisateur === 'object' && utilisateur.fullname) {
+        return utilisateur.fullname;
+    } else if (typeof utilisateur === 'number') {
+        const user = this.users.find(u => u.id === utilisateur);
+        return user ? user.fullname : 'ghayrha';
+    }
+    return 'ghayrha';
+}
 
   openDeleteModal(equipement : Equipement) : void{
     this.equipementToDelete = equipement;

@@ -69,4 +69,18 @@ export class TicketsComponent implements OnInit {
     this.ticketToAssigne = null;
   }
 
+  assignTechnicien(idUserSelect: string) {
+
+    const idUser = parseInt(idUserSelect,10)
+    if (this.ticketToAssigne) {
+      this.ticketsService.assignTicketToTechnicien(this.ticketToAssigne.idTicket, idUser).subscribe(
+        response => {
+          this.getTickets
+          this.closeAssignModal();
+        },
+        error => console.error('Error assigning ticket:', error)
+      );
+    }
+  }
+
 }

@@ -22,7 +22,7 @@
                         <td>{{ ticket.dateCreation | date }}</td>
                         <td>{{ ticket.equipement.nom }}</td>
                         <td>{{ ticket.panne?.description || 'N/A' }}</td>
-                        <td>{{ ticket.technicien ? ticket.technicien.fullname : 'Not assigned' }}</td>
+                        <td>{{ ticket.technicien ? ticket.technicien?.fullname : 'Not assigned' }}</td>
                         <td>
                             <a class="btn btn-success" (click)="openAssignModal(ticket)">Assign</a>
                         </td>
@@ -52,7 +52,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="closeAssignModal()">Cancel</button>
-                <button type="button" class="btn btn-primary" >Assign</button>
+                <button type="button" class="btn btn-primary" (click)="assignTechnicien(technicianSelect.value)" >Assign</button>
             </div>
         </div>
     </div>
