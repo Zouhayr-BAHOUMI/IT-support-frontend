@@ -25,4 +25,8 @@ export class TicketsService {
   public getPannes(): Observable<Panne[]> {
     return this.http.get<Panne[]>(`${this.apiUrl}/user/pannes`);
   }
+
+  public getTicketsUtilisateur(): Observable<Ticket[]> {
+    return this.http.get<Ticket[]>(`${this.apiUrl}/user/tickets`);
+  }
 }

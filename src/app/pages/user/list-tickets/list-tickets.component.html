@@ -5,8 +5,8 @@
         <div class="mb-4 mt-4">
             <a class="btn btn-primary" routerLink="create">Create</a>
         </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-            <app-card-ticket></app-card-ticket>
+        <div class="col-md-6 col-lg-4 mb-4" *ngFor="let ticket of tickets">
+            <app-card-ticket [ticket]="ticket"></app-card-ticket>
         </div>
     </div>
 </div>

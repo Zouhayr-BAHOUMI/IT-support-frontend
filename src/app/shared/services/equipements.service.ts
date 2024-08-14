@@ -25,7 +25,9 @@ export class EquipementsService {
   }
 
   public updateEquipement(idEquipement: number, equipement: Equipement): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/update/${idEquipement}`, equipement);
+    return this.http.put<void>(`${this.apiUrl}/update/${idEquipement}`, equipement , {
+      headers: { 'Content-Type': 'application/json' }
+  });
   }
 
   public deleteEquipement(idEquipement: number): Observable<void> {
